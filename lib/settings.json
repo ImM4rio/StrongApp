@@ -1,0 +1,9 @@
+{
+    "packages": {
+        "email": {
+            "service": "Mailgun",
+            "user": "postmaster@sandbox9b5ba4bc81744c24b06466edf42e4e7e.mailgun.org",
+            "password": "eb629afc173d9348a7801e21c8837355-f2340574-f91f208c"
+        }
+    }
+}

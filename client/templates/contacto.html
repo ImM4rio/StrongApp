@@ -1,0 +1,82 @@
+<template name="contacto">
+    <div class="ui sidebar inverted vertical menu" id="leftMenuSidebar">
+        <div id="sidebarTitle">
+            <h1 class="ui red centered huge header">StrongTrack</h1>
+            {{#if currentUser}}
+                <img class="ui circular image profileImage"  src="{{currentUser.profile.avatar}}" title="{{currentUser.username}}" alt="{{currentUser.username}}">
+            {{/if}}
+            <a href="/home" id="sidebarFirstItem" class="item">
+                HOME
+            </a>
+            {{#if currentUser}}
+            <a href="/marcas/{{currentUser._id}}" class="item">
+                MIS MARCAS
+            </a>
+            <a href="/perfil" class="item">
+                PERFIL
+            </a>
+            <a href="/comunidad" class="item">
+                COMUNIDAD
+            </a>
+            {{/if}}
+            <a href="" class="item disabled">
+                CONTACTO
+            </a>
+            {{#if currentUser}}
+            <div class="logout">
+                <button class="negative mini ui button">Log Out</button>
+            </div>
+            {{/if}}
+        </div>
+            <div id="icons">
+                {{#if currentUser}}
+                    {{#if hasTelegramUser}}
+                        <i class="telegram plane link inverted big icon"></i>
+                    {{/if}}
+                {{/if}}
+                <a href="https://www.instagram.com/">
+                    <i class="instagram link inverted big icon"></i>
+                </a>
+            </div>
+    </div>
+    <div class="pusher">
+        {{> openSidebar}}
+        <div id="contacto">
+            <div class="ui hidden negative default message">
+                <i class="close icon"></i>
+                <div class="header">
+                </div>
+            </div>
+            <div class="ui hidden success default message">
+                <i class="close icon"></i>
+                <div class="header">
+                </div>
+            </div>
+            <div class="four column grid center aligned homeForm">
+                <div class="ui header two column centered row">FORMULARIO DE CONTACTO</div>
+                <h4 class="ui header">
+                    <div class="ui sub header two column grey centered row">Ponte en contacto con nosotros.</div>
+                </h4>
+                <form class="ui form contactForm" action="">
+                    <h6 class="ui dividing header">Información de contacto</h6>
+                    <div class="two fields">
+                        <div class="field">
+                            <input type="text" class="nameFormTxt" placeholder="Nombre">
+                        </div>
+                        <div class="field">
+                            <input type="email" class="emailFormEm" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <textarea class="textareaForm" placeholder="Mensaje..."></textarea>
+                    </div>
+                    <div class="ui red sixteen wide field vertical animated button">
+                        <div class="visible content">Enviar Mensaje</div>
+                        <div class="hidden content"><i class="envelope outline icon"></i></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {{> footer}}
+    </div>
+</template>

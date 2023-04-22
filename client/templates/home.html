@@ -1,0 +1,242 @@
+<template name="home">
+    <div class="ui sidebar inverted vertical menu" id="leftMenuSidebar">
+        <div id="sidebarTitle">
+            <h1 class="ui red centered huge header">StrongTrack</h1>
+            {{#if currentUser}}
+                <img class="ui circular image profileImage" src="{{currentUser.profile.avatar}}" title="{{currentUser.username}}" alt="{{currentUser.username}}">
+            {{/if}}
+            <a href="/" id="sidebarFirstItem" class="item disabled">
+                HOME
+            </a>
+            {{#if currentUser}}
+            <a href="/marcas/{{currentUser._id}}" class="item">
+                MIS MARCAS
+            </a>
+            <a href="/perfil" class="item">
+                PERFIL
+            </a>
+            <a href="/comunidad" class="item">
+                COMUNIDAD
+            </a>
+            {{/if}}
+            <a href="/contacto" class="item">
+                CONTACTO
+            </a>
+            {{#if currentUser}}
+            <div class="logout">
+                <button class="negative mini ui button">Log Out</button>
+            </div>
+            {{/if}}
+        </div>
+            <div id="icons">
+                {{#if currentUser}}
+                    {{#if hasTelegramUser}}
+                        <i class="telegram plane link inverted big icon"></i>
+                    {{/if}}
+                {{/if}}
+                <a href="https://www.instagram.com/">
+                    <i class="instagram link inverted big icon"></i>
+                </a>
+            </div>
+    </div>
+    <div class="pusher">
+        {{> openSidebar}}
+        <div id="main">
+            <div class="ui hidden negative default message">
+                <i class="close icon"></i>
+                <div class="header">
+                </div>
+            </div>
+            <div class="ui hidden success default message">
+                <i class="close icon"></i>
+                <div class="header">
+                </div>
+            </div>
+            <div class="ui stacked segments large">
+                <div class="formularioRegistroLogin" style="display: none;">
+                    <form class="ui form formularioLogIn" style="display: none;">
+                        <div class="ten wide field">
+                            <h5 class="ui dividing header">Email</h5>
+                            <input type="text" placeholder="Introduce tu email" class="logEmail">
+                        </div>
+                        <div class="ten wide field">
+                            <h5 class="ui dividing header">Contraseña</h5>
+                            <input type="password" class="logPSW" placeholder="Introduce tu contraseña">
+                        </div>
+                        <div class="ui fluid buttons">
+                            <button class="ui red logInFormBtn button">Log In</button>
+                            <div class="ui vertical animated button salirLoginForm" tabindex="0">
+                                <div class="hidden content">Salir</div>
+                                <div class="visible content">
+                                    <i class="x icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="ui form formularioRegistro" style="display: none;">
+                        <h5 class="ui dividing header">Nombre <span style="color: red;">*</span> y apellidos</h5>
+                        <div class="two fields">
+                            <div class="six wide field">
+                                <input type="text" placeholder="Introduce tu nombre" class="registroNombre">
+                            </div>
+                            <div class="ten wide field">
+                                <input type="text" placeholder="Introduce tu apellido/s" class="registroApellidos">
+                            </div>
+                        </div>
+                        <div class="sixteen wide field">
+                            <h5 class="ui dividing header">Descripción</h5>
+                            <textarea placeholder="Breve descripción sobre ti..." class="descripcionTextA"></textarea>
+                        </div>
+                        <div class="sixteen wide field">
+                            <h5 class="ui dividing header">Box<span style="color: red;">*</span></h5>
+                            <input type="text" placeholder="Box asociado" class="boxAsociadoTxt">
+                        </div>
+                        <div class="field">
+                            <h5 class="ui dividing header">Imagen</h5>
+                            {{#with currentUpload}}
+                                Uploading <b>{{file.name}}</b>:
+                                <span id="progress">{{progress.get}}%</span>
+                                {{else}}
+                                <input id="fileInput" type="file" />
+                            {{/with}}
+                        </div>
+                        <div class="ten wide field">
+                            <h5 class="ui dividing header">Email <span style="color: red;">*</span></h5>
+                            <input type="text" placeholder="Introduce tu email" class="registroEmail">
+                        </div>
+                        <div class="ten wide field">
+                            <h5 class="ui dividing header">Contraseña <span style="color: red;">*</span></h5>
+                                <input type="password" class="registroPSW" placeholder="Introduce tu contraseña">
+                        </div>
+                        <div class="ten wide field">
+                            <input type="password" class="registroPSW2" placeholder="Repite la contraseña">
+                        </div>
+                        <div class="field">
+                            <h5 class="ui dividing header">Teléfono <span style="color: red;">*</span></h5>
+                            <div class="ui left icon input">
+                                <input type="tel" class="registroTel" placeholder="Introduce tu teléfono">
+                                <i class="phone red icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <input type="checkbox" >
+                                <label>I agree to the Terms and Conditions</label>
+                            </div>
+                        </div>
+                        <div class="ui fluid buttons">
+                            <button class="ui red button registrarseBtnForm">Registrarse</button>
+                            <div class="ui vertical animated button salirRegistroForm" tabindex="0">
+                                <div class="hidden content">Salir</div>
+                                <div class="visible content">
+                                    <i class="x icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="ui center aligned segment mainText">
+                    <p>&lt;&lt;'I'M GONNA DO TODAY WHAT OTHER PEOPLE AREN'T WILLING TO. SO I CAN DO
+                    TOMORROW, WHAT OTHER PEOPLE CAN'T &gt;&gt;</p>
+                    <p>--MATT FRASER--</p>
+                    <p id="traductionText">HOY VOY A HACER LO QUE OTRAS PERSONAS NO ESTÁN DISPUESTAS A HACER, ASÍ PODRÉ HACER MAÑANA LO QUE OTRAS 
+                    PERSONAS NO PUEDEN</p>
+                </div>
+                <div id="mainButtons">
+                    <div class="ui buttons">
+                        {{#unless currentUser}}
+                        <button class="ui huge inverted button registrarseBtn">Registrarse</button>
+                        <div class="or" data-text="o"></div>
+                        {{/unless}}
+                        {{#if currentUser}}
+                            <button class="ui huge inverted red button logoutBtn">Log Out</button>
+                        {{else}}
+                            <button class="ui huge inverted red button loginBtn">Log In</button>
+                        {{/if}}
+                    </div>
+                </div>       
+            </div>
+        </div>
+        <div class="ui four column grid center aligned revEntreno">
+            <div class="ui header two column centered row sectionTitle">REVOLUCIONA TU ENTRENO</div>
+            <div class="column center aligned">
+                <img class="homeIcon" src="icono_gimnasticos.jpg" alt="Icono gimnasticos">
+                <div class="ui large header">GIMNÁSTICOS</div>
+                <p>Mejora tus elementos gimnásticos comprobando tu mejoría día tras día sin dejarte ninguna repetición atrás y olvidándote del papel.</p>
+                {{#if currentUser}}    
+                    <a class="revEntrenoAnchors" href="/marcas/{{currentUser._id}}">Mis Marcas</a>
+                {{else}}
+                    <a class="registrarseA">Regístrate!</a>
+                {{/if}}
+            </div>
+            <div class="column center aligned">
+                <img src="icono_haltero.jpg" alt="Icono halterofilia" class="homeIcon">
+                <div class="ui large header">HALTEROFILIA</div>
+                <p>Cansado de olvidarte de tus PR continuamente? Guárdalos cómodamente en StrongApp y llévalos contigo a todas partes.</p>
+                {{#if currentUser}}
+                    <a class="revEntrenoAnchors" href="/marcas/{{currentUser._id}}">Mis Marcas</a>
+                {{else}}
+                    <a class="registrarseA">Regístrate!</a>
+                {{/if}}
+            </div>
+            <div class="column center aligned">
+                <img src="icono_heroe.jpg" alt="Icono heroe" class="homeIcon">
+                <div class="ui large header">HÉROES</div>
+                <p>Eres de los más atrevidos y buscas retarte? Averigua qué héroe te proponemos hoy con nuestros retos!!</p>
+                {{#if currentUser}}
+                    <a class="revEntrenoAnchors" href="/perfil">Mi Perfil</a>
+                {{else}}
+                    <a class="registrarseA">Regístrate!</a>
+                {{/if}}
+            </div>
+            <div class="column center aligned">
+                <img src="sobre.png" alt="Icono amigos" class="homeIcon amigos">
+                <div class="ui large header">AMIGOS</div>
+                <p>Mantén a tus amigos vigilados, o a tus rivales..., para ver su progreso y exigirte incluso cuando estés entrenando solo</p>
+                {{#if currentUser}}
+                    <a class="revEntrenoAnchors" href="/comunidad">Comunidad</a>
+                {{else}}
+                    <a class="registrarseA">Regístrate!</a>
+                {{/if}}
+            </div>
+        </div>
+        <div class="ui three column grid center aligned telegramBtnSection">
+            <div class="one column row">
+                <button class="ui blue button {{#if hasTelegramUser}}disabled{{/if}} {{#unless currentUser}}disabled{{/unless}} telegramBtn"><i class="telegram plane link inverted icon"></i>Conéctate a nuestro bot de telegram</button>
+                <div class="usuarioTelegramDiv" style="display: none;">
+                    <div class="ui input">
+                        <input type="text" class="usuarioTelegramTxt" placeholder="Usuario...">
+                    </div>
+                    <button class="ui button blue small">Conectar</button>
+                </div>
+            </div>
+        </div>
+        <div class="four column grid center aligned homeForm">
+            <div class="ui header two column centered row">FORMULARIO DE CONTACTO</div>
+            <h4 class="ui header">
+                <div class="ui sub header two column grey centered row">Ponte en contacto con nosotros.</div>
+            </h4>
+            <form class="ui form contactForm">
+                <h6 class="ui dividing header">Información de contacto</h6>
+                <div class="two fields">
+                    <div class="field">
+                        <input type="text" class="nameFormTxt" placeholder="Nombre">
+                    </div>
+                    <div class="field">
+                        <input type="email"  class="emailFormEm" placeholder="Email">
+                    </div>
+                </div>
+                <div class="field">
+                    <textarea class="textareaForm"  placeholder="Mensaje..."></textarea>
+                </div>
+                <div class="ui red sixteen wide field vertical animated button">
+                    <div class="visible content">Enviar Mensaje</div>
+                    <div class="hidden content"><i class="envelope outline icon"></i></div>
+                </div>
+            </form>
+        </div>
+        {{> footer}}
+    </div>
+</template>
+

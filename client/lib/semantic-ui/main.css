@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+/* Variables */
+:root {
+  --rojo: #c52f2f;
+}
+
+html {
+}
+
+body {
+  min-width: 600px !important;
+  padding: 10px;
+  /* height: 100%; */
+  font-family: sans-serif;
+  background-image: url('./gimnasio.jpg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-attachment: fixed;
+  background-repeat: no-repeat !important;
+
+
+}
+
+.pushable>.pusher{
+  background-image: url('/gimnasio.jpg') !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-attachment: fixed;
+  background-repeat: no-repeat !important;
+
+}
+
+.pushable>.pusher::after{
+
+}
+
+/* Sidebar */
+
+.ui.sidebar.inverted.vertical.menu{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.red.big.bars.icon {
+  position: sticky;
+  z-index: 999;
+}
+
+#sidebarTitle {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Semantic UI sizes are based on element font-size */
+  font-size: large;
+  
+}
+
+#sidebarFirstItem {
+  margin-top: 20%;
+}
+
+div#sidebarTitle a.item:hover{
+  color: var(--rojo);
+  background: none !important;
+}
+
+.profileImage{
+  width: 216px;
+  height: 233px;
+}
+
+#icons {
+  display: flex;
+  justify-content: center;
+}
+
+.logout{
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+/* Main display */
+#main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
+
+/* Main text */
+.mainText {
+  background-color:rgba(0, 0, 0, 0.5) !important;
+  color: #fff;
+  font-style: italic;
+  font-size: 3vh !important;
+  max-width: 1990px;
+}
+
+#mainButtons {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+#traductionText {
+  font-size: 1.5vh;
+}
+
+/*Home scroll */
+.revEntreno{
+  background-color: #ffff;
+  padding: 5vh 0vh 5vh 0vh !important;
+  width: 101vw;
+  align-items: baseline !important;
+}
+
+.revEntreno>*>.header { 
+  font-family: 'Oswald', sans-serif !important;
+
+}
+
+.sectionTitle {
+  font-family: 'Oswald', sans-serif !important;
+  font-size: 2rem !important;
+  
+}
+
+.homeIcon {
+  width: 8vw;
+}
+
+
+.homeIcon.amigos {
+  width: 8vw !important;
+}
+
+.revEntrenoAnchors {
+  color: var(--rojo);
+  opacity: .6;
+  transition: .3s;
+
+}
+
+.revEntrenoAnchors:hover {
+  color: var(--rojo);
+  opacity: 1;
+  font-weight: bold;
+
+}
+
+.telegramBtnSection {
+  background-color: var(--rojo);
+  height: 8vh;
+  width: 101vw
+}
+
+.telegramBtn {
+  height: fit-content;
+}
+
+.telegramBtnSection>.one.column.row {
+  align-items: center;
+  padding: 0;
+}
+
+
+/* Home form */
+.homeForm {
+  padding-top: 5vh;
+  background-color: #fff;
+  width: 100vw;
+  height: 50vh;
+  min-width: 300px;
+}
+
+.homeForm>.ui.header{
+  font-family: 'Oswald', sans-serif;
+  font-size: 2rem !important;
+}
+
+.contactForm {
+  margin: 0 auto;
+  width: 80%;
+}
+
+/* Home telegram popup */
+.nombreTelegram {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Register form */
+.formularioRegistro {
+  width: 80%;
+  margin: 0 auto;
+  background-color: white;
+
+}
+
+.formularioLogIn {
+  padding: 20px 10px 20px 10px;
+  text-align: center;
+  border-radius: 9px;
+}
+
+.formularioLogIn div.ten.wide.field {
+  margin: 0 auto;
+  margin-bottom: 20px;
+
+}
+
+.formularioRegistroLogin {
+  width: 60vw;
+  background-color: white;
+  padding: 30px 0 30px 0;
+  margin: 0 auto;
+  border-radius: 8px;
+  border-left: 1px solid var(--rojo);
+  border-bottom: 2px solid var(--rojo);
+}
+
+/*footer*/
+footer {
+  width: 100vw;
+  background-color: #e1e1e1;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+}
+
+
+/* Marcas */
+
+#misMarcas {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  flex-direction: column;
+  min-width: 556px;
+}
+
+.misMarcasIcon {
+  width: 100px;
+  height: 100px;
+  border: 1px solid var(--rojo);
+  min-height: 100px;
+}
+
+.gimnasticosIcon, .halteroIcon, .heroeIcon{
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+
+}
+
+.titleMarcas {
+  background-color: rgb(0, 0, 0, .4);
+  color: white !important;
+  font-weight: bold !important;  
+}
+
+.ui.dropdown{
+  text-align: center;
+}
+
+.marcasForm {
+  margin: 0 auto;
+  width: 50%;
+  background-color: lightgray;
+  padding: 15px;
+  border-radius: 5%;
+  z-index: 2;
+}
+
+.marcasForm input {
+  width: 50% !important;
+}
+
+#misMarcas > * .two.column.row{
+  align-items: baseline !important;
+  top: 50px;
+  min-width: 550px;
+  overflow: scroll;
+}
+
+.gridContent {
+  overflow: scroll;
+  min-height: 250px;
+}
+
+.gridContent>.ui.relaxed.grid{
+  justify-content: center;
+}
+
+.disciplinaIconoForm {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: baseline;
+  width: 50vw !important;
+  margin: 10px auto;
+  height: 25vh;
+}
+
+.cardsScore {
+  margin: 0 20px;
+  max-width: 1000px;
+  min-width: 700px;
+}
+
+.trash.alternate.outline.icon:hover{
+  color: red;
+}
+
+.buscar{
+  z-index: 2;
+}
+
+.buscar>i{
+  z-index: 3;
+}
+
+.ui.centered.card{
+  width: 250px;
+  height: 125px;
+  margin: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Perfil */
+#perfil {
+  height: 100vh;
+  display: flex;
+  width: 100vw;
+  padding-top: 5%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ajustesForm {
+  background-color: #d4d4d5;
+  padding: 10px;
+  border-radius: 5%;
+  width: 100%;
+}
+
+.ajustesForm input{
+  border: 1px solid black !important;
+}
+
+#perfil >.ui.header {
+  margin-top: 10%;
+  font-size: 4em;
+
+}
+
+.imagenCabecera{
+  min-height: 150px;
+}
+
+.retosPerfil {
+  margin-top: 2% !important;
+}
+
+/** Comunidad **/
+
+#comunidad {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
+#map {
+  height: 300px;
+  width: 100%;
+  margin-bottom: 5%;
+  top: 5%;
+}
+
+#comunidad>*>.four.wide.column{
+  min-width: 155px;
+}
+
+.friendCard {
+  width: 200px;
+  min-width: 150px;
+  max-height: 300px;
+
+}
+
+#comunidad>*>.ui.search {
+  margin-bottom: 5%;
+}
+
+.small.link.icon.power.off:hover{
+  color: red;
+ 
+}
+
+.small.link.icon.power.off{
+  transition: .5s ease-in-out;
+}
+
+.divCard {
+  display: flex !important;
+  justify-content: center;
+}
+
+/** Contacto **/
+
+#contacto {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
+#contacto > .homeForm {
+  background-color: rgb(255, 255, 255);
+}
+
+#contacto > .homeForm input:hover {
+  background-color: rgb(211, 211, 211, .3);
+}
+
+#contacto > .homeForm input:focus {
+  border: 1px solid greenyellow;
+}
+
+/** Mensajes **/
+.ui.success.message{
+  position: absolute;
+  top: 0;
+  width: 90%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ui.negative.message{
+  position: absolute;
+  top: 0;
+  width: 90%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}

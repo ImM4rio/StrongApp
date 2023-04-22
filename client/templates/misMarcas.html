@@ -1,0 +1,181 @@
+<template name="misMarcas">
+    <div class="ui sidebar inverted vertical menu" id="leftMenuSidebar">
+        <div id="sidebarTitle">
+            <h1 class="ui red centered huge header">StrongTrack</h1>
+            {{#if currentUser}}
+                <img class="ui circular image profileImage" src="{{currentUser.profile.avatar}}"  title="{{currentUser.username}}" alt="{{currentUser.username}}">
+            {{/if}}
+            <a href="/" id="sidebarFirstItem" class="item">
+                HOME
+            </a>
+            {{#if currentUser}}
+            <a href="" class="item disabled">
+                MIS MARCAS
+            </a>
+            <a href="/perfil" class="item">
+                PERFIL
+            </a>
+            <a href="/comunidad" class="item">
+                COMUNIDAD
+            </a>
+            {{/if}}
+            <a href="/contacto" class="item">
+                CONTACTO
+            </a>
+            {{#if currentUser}}
+            <div class="logout">
+                <button class="negative mini ui button">Log Out</button>
+            </div>
+            {{/if}}
+        </div>
+            <div id="icons">
+                {{#if currentUser}}
+                    {{#if hasTelegramUser}}
+                        <i class="telegram plane link inverted big icon"></i>
+                    {{/if}}
+                {{/if}}
+                <a href="https://www.instagram.com/">
+                    <i class="instagram link inverted big icon"></i>
+                </a>
+            </div>
+    </div>
+    <div class="pusher">
+        {{> openSidebar}}
+        <div id="misMarcas">
+            <div class="ui hidden negative message">
+                <i class="close icon"></i>
+                <div class="header">
+                </div>
+            </div>
+            <div class="ui hidden success message">
+                <i class="close icon"></i>
+                <div class="header">
+                </div>
+            </div>
+            <div class="column center aligned disciplinaIconoForm">
+                <img class="misMarcasIcon gimnasticosIcon ui circular centered image" src="/icono_gimnasticos.jpg" alt="Icono gimnasticos" style="display: none;">
+                <img src="/icono_haltero.jpg" alt="Icono halterofilia" class="misMarcasIcon halteroIcon centered ui circular image" style="display: none;">
+                <img src="/icono_heroe.jpg" alt="Icono heroe" class="misMarcasIcon heroeIcon ui centered circular image" style="display: none;">
+                    {{#if addData}}
+                    <form class="ui form">
+                        <div class="field">
+                            <select class="ui fluid dropdown selectDisciplina">
+                                <option selected disabled value="">Selecciona disciplina</option>
+                                <option value="W">Haterofilia</option>
+                                <option value="G">Gimnásticos</option>
+                                <option value="H">Héroes</option>
+                            </select>
+                        </div>
+                    </form>
+                    {{/if}}
+                <div class="ui relaxed grid">
+                    <div class="one column centered row">
+                        <div class="ui large buttons">
+                            <button class="ui blue button buscarBtn">Buscar</button>
+                            {{#if addData}}
+                                <button class="ui blue button buscarBtn" style="display: none;"><i class="x icon"></i></button>
+                                <div class="or" data-text="o"></div>
+                                <button class="ui red button anadirBtn">Añadir</button>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="one column centered row buscarLbl" style="display:none;">
+                        <div class="ui search left buscar icon input">
+                            <i class="search blue icon"></i>
+                            <input type="text" class="prompt" placeholder="Buscar...">
+                        </div>
+                    </div>
+                    <div class="one column centered row marcasFormDiv" style="display: none;">
+                        <form class="ui form marcasForm">
+                            <div class="pesoForm" style="margin-bottom: 15px; display: none;">
+                                <h4 class="ui dividing header">Movimiento</h4>
+                                    <div class="ui fluid left icon input search searchEx">
+                                        <i class="search icon"></i>
+                                        <input type="text" class="prompt nombreHalteroTxt" placeholder="Movimiento">
+                                    </div>                                            
+                                <h4 class="ui dividing header">Peso</h4>
+                                <div class="ui right labeled input">
+                                    <input class="pesoN" type="number" placeholder="Introduce peso...">
+                                    <div class="ui basic label">kg</div>
+                                </div>
+                            </div>
+                            <div class="tiempoForm" style="margin-bottom: 15px; display: none;">
+                                <h4 class="ui dividing header">Movimiento</h4>
+                                <div class="ui fluid left icon input search searchEx">
+                                    <i class="search icon"></i>
+                                    <input type="text" class="prompt nombreHeroeTxt" placeholder="Movimiento">
+                                </div>
+                                <div class="marcaHeroe" style="display: none; margin-top: 10px;">
+                                    <h4 class="ui dividing header"><span class="resultHeroe"></span></h4>
+                                    <input type="time" placeholder="Tiempo" class="forTime" style="width: 30%; display: none;">
+                                    <input type="number" placeholder="Repeticiones" class="totalReps" style="width: 50%; display: none;">
+                                </div>
+                            </div>
+                            <div class="repeticionesForm" style="margin-bottom: 15px; display: none;">
+                                <h4 class="ui dividing header">Movimiento</h4>
+                                <div class="ui fluid left icon input search searchEx">
+                                    <i class="search icon"></i>
+                                    <input type="text" class="prompt nombreGimnasticTxt" placeholder="Movimiento">
+                                </div>    
+                                <h4 class="ui dividing header">Repeticiones</h4>
+                                <div class="ui right labeled input">
+                                    <input type="number" class="repsN" placeholder="Repeticiones...">
+                                    <div class="ui basic label">ub</div>
+                                </div>
+                            </div>
+                            <h4 class="ui dividing header"></h4>
+                            <div class="ui animated red button anadirFormBtn">
+                                <div class="visible content">Añadir</div>
+                                <div class="hidden content">
+                                    <i class="right arrow icon"></i>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <h4 class="ui horizontal inverted divider header">
+                <i class="trophy red icon"></i>
+                Marcas
+              </h4>
+            <div class="gridContent">
+            <div class="ui relaxed grid">
+                    <div class="three column cardsScore row">
+                        {{#each exercise in getExercises}}
+                        <div class="column">
+                            <div class="ui centered card" style="margin-bottom: 10px;">
+                                <div class="content">
+                                    {{#if addData}}
+                                        <button class="ui right floated mini icon button deleteExercise" data-id={{exercise._id}}>
+                                            <i class="trash alternate outline icon"></i>
+                                        </button>
+                                    {{/if}}
+                                    {{#if equals exercise.type "Heroe"}}
+                                        <img class="ui avatar left floated image" src="/icono_heroe.jpg">
+                                    {{/if}}
+                                    {{#if equals exercise.type "Weightlifting"}}
+                                        <img class="ui avatar left floated image" src="/icono_haltero.jpg">
+                                    {{/if}}
+                                    {{#if equals exercise.type "Gimnastics"}}
+                                    <img class="ui avatar left floated image" src="/icono_gimnasticos.jpg">
+                                    {{/if}}
+                                    <div class="header">
+                                        {{exercise.name}}
+                                    </div>
+                                    <div class="description">{{exercise.result}} {{getType exercise}}</div>
+                                </div>
+                                <div class="extra content">
+                                    <div class="center aligned author">
+                                        {{exercise.date}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>     
+        {{> footer}}
+    </div>
+</template>

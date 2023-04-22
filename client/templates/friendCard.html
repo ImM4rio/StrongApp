@@ -1,0 +1,33 @@
+<template name="friendCard">
+    <div class="four wide column divCard">
+        <div class="ui card friendCard">
+            <div class="content">
+                <div class="right floated meta">
+                    <i class="small link icon power off"></i>
+                </div>
+                <div class="image">
+                    <img class="ui circular image" style="height: 100px; width: 100px;" src="{{this.profile.avatar}}"/>
+                </div>
+            </div>
+                <div class="content">
+                <a class="header" href="/marcas/{{this._id}}">{{this.profile.name.first}}</a>
+                <div class="meta">
+                    <span class="date">{{this.profile.name.second}}</span>
+                </div>
+                <div class="description">
+                    {{this.profile.description}}
+                </div>
+            </div>
+            <div class="extra content">
+                <a class="box">
+                    <i class="home icon"></i>
+                    Box
+                </a>
+                <div class="right floated">
+                    <i class="user icon"></i>
+                    {{getNFriends}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

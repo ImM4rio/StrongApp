@@ -1,0 +1,80 @@
+<template name="comunidad">
+    <div class="ui sidebar inverted vertical menu" id="leftMenuSidebar">
+        <div id="sidebarTitle">
+            <h1 class="ui red centered huge header">StrongTrack</h1>
+            {{#if currentUser}}
+                <img class="ui circular image profileImage" src="{{currentUser.profile.avatar}}"  title="{{currentUser.username}}" alt="{{currentUser.username}}">
+            {{/if}}
+            <a href="/home" id="sidebarFirstItem" class="item">
+                HOME
+            </a>
+            {{#if currentUser}}
+            <a href="/marcas/{{currentUser._id}}" class="item">
+                MIS MARCAS
+            </a>
+            <a href="/perfil" class="item">
+                PERFIL
+            </a>
+            <a href="/comunidad" class="item disabled">
+                COMUNIDAD
+            </a>
+            {{/if}}
+            <a href="/contacto" class="item">
+                CONTACTO
+            </a>
+            {{#if currentUser}}
+            <div class="logout">
+                <button class="negative mini ui button">Log Out</button>
+            </div>
+            {{/if}}
+        </div>
+            <div id="icons">
+                {{#if currentUser}}
+                    {{#if hasTelegramUser}}
+                        <i class="telegram plane link inverted big icon"></i>
+                    {{/if}}
+                {{/if}}
+                <a href="https://www.instagram.com/">
+                    <i class="instagram link inverted big icon"></i>
+                </a>
+            </div>
+    </div>
+    <div class="pusher">
+        {{> openSidebar}}
+        <div id="comunidad">
+        <div class="ui hidden negative default message">
+            <i class="close icon"></i>
+            <div class="header">
+            </div>
+        </div>
+        <div class="ui hidden success default message">
+            <i class="close icon"></i>
+            <div class="header">
+            </div>
+        </div>
+        {{#if currentUser}}  
+            {{> map this}}
+        {{/if}}
+            <div class="ui grid centered">
+                <h2 class="ui center inverted white aligned icon header">
+                    <i class="circular small red users icon"></i>
+                    Amigos
+                </h2>
+            </div>
+            <div class="ui left icon input amigos">
+            <div class="ui search left icon input">
+            <i class="search blue icon"></i>
+            <input type="text" class="prompt" placeholder="Añadir amigos...">
+        </div>
+            </div>
+        <div class="ui centered grid" style="width: 100%;padding-bottom: 20px;">
+            {{#if getFriends}}
+            {{#each getFriends}}
+                {{>friendCard this}}
+            {{/each}}
+            {{/if}}     
+        </div>
+    </div>
+        {{> footer}}
+    </div>
+</template>

@@ -1,0 +1,108 @@
+<template name="perfil">
+  <div class="ui sidebar inverted vertical menu" id="leftMenuSidebar">
+    <div id="sidebarTitle">
+        <h1 class="ui red centered huge header">StrongTrack</h1>
+        {{#if currentUser}}
+            <img class="ui circular image profileImage" src="{{currentUser.profile.avatar}}" title="{{currentUser.username}}" alt="{{currentUser.username}}">
+        {{/if}}
+        <a href="/home" id="sidebarFirstItem" class="item">
+            HOME
+        </a>
+        {{#if currentUser}}
+        <a href="/marcas/{{currentUser._id}}" class="item">
+            MIS MARCAS
+        </a>
+        <a href="" class="item disabled">
+            PERFIL
+        </a>
+        <a href="/comunidad" class="item">
+            COMUNIDAD
+        </a>
+        {{/if}}
+        <a href="/contacto" class="item">
+            CONTACTO
+        </a>
+        {{#if currentUser}}
+        <div class="logout">
+            <button class="negative mini ui button">Log Out</button>
+        </div>
+        {{/if}}
+    </div>
+        <div id="icons">
+          {{#if currentUser}}
+            {{#if hasTelegramUser}}
+              <i class="telegram plane link inverted big icon"></i>
+            {{/if}}
+          {{/if}}
+          <a href="https://www.instagram.com/">
+              <i class="instagram link inverted big icon"></i>
+          </a>
+        </div>
+  </div>
+  <div class="pusher">
+    {{> openSidebar}}
+    <div id="perfil">
+      <div class="ui hidden negative message">
+        <i class="close icon"></i>
+        <div class="header">
+        </div>
+    </div>
+    <div class="ui hidden success message">
+        <i class="close icon"></i>
+        <div class="header">
+        </div>
+    </div>
+      <img class="ui circular centered image profileImage" src="{{currentUser.profile.avatar}}" title="{{currentUser.username}}" alt="{{currentUser.username}}">
+      <div>
+        <form class="ui form ajustesForm" style="display: none;">
+          <h4 class="ui dividing header">Datos personales</h4>
+          <div class="field">
+            {{>imageForm}}
+            <!--<input type="file" class="avatarFl">-->
+          </div>
+          <div class="field">
+            <label>Nombre</label>
+            <input type="text" placeholder="Nombre" class="firstNameTxt">
+          </div>
+          <div class="field">
+            <label>Apellidos</label>
+            <input type="text" placeholder="Apellidos" class="secondNameTxt">
+          </div>
+          <h4 class="ui dividing header">Descripción</h4>
+          <div class="field">
+            <textarea rows="2" placeholder="Breve descripción..." class="descriptionTxt"></textarea>
+          </div>
+          <h4 class="ui dividing header">Afiliado</h4>
+          <div class="field">
+            <input type="text" placeholder="Box afiliado o ciudad" class="boxTxt">
+          </div>
+          <div class="ui red submit bottom attached button modificarPerfilBtn">Modificar</div>    
+          <button class="ui button fluid descartarBtn">Descartar cambios</button>
+        </form>
+        <div class="ui card usuarioCard">
+          <div class="content">
+            <div class="header">{{user.profile.name.first}}</div>
+            <div class="meta">{{user.profile.box}}</div>
+            <div class="description">
+              {{user.profile.description}}
+            </div>
+          <div class="ui right floated bottom button ajustesBtn">
+            <i class="cogs icon"></i>
+              Ajustes
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1 class="ui inverted centered header">
+      <div class="sub header">¿No sabes qué hacer?</div>
+      ¡Rétate!
+    </h1>
+    <div class="ui three column grid retosPerfil">
+      {{#each challenge in getRandom}}
+        {{>retos challenge}}
+      {{/each}}
+    </div>
+  </div>
+    {{> footer}}
+  </div>
+</template>

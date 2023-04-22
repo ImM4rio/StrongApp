@@ -1,0 +1,35 @@
+<template name="retos">
+    <div class="column">
+        <div class="ui card">
+          <div class="content">
+            <img class="right floated mini ui image" src="{{getIcon this.type}}">
+            <div class="header">
+              {{this.name}}
+            </div>
+            <div class="meta">
+              {{this.type}}
+            </div>
+            <div class="description">
+              <b>Descripción: </b>
+                {{this.description}}
+            </div>
+          </div>
+          <div class="extra content">
+            <div class="ui fluid buttons">
+              <div class="ui basic green retoBtn button">A por ello!</div>
+            </div>
+            <form class="ui form retoForm" data-counter="{{this.counter}}" data-type="{{this.type}}" style="display: none;">
+              <input type="number" class="repsN" placeholder="Repeticiones..." style="display: none;">
+              <input type="time" placeholder="Tiempo" class="forTime" style="display: none;">
+              <input class="pesoN" type="number" placeholder="Introduce peso..." style="display: none;">
+              <div class="ui animated fluid red button anadirReto">
+                <div class="visible content">Añadir</div>
+                <div class="hidden content">
+                    <i class="right arrow icon"></i>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+</template>
