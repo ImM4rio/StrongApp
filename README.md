@@ -20,19 +20,7 @@ A la hora de acceder a la página web tan sólo es necesario desplegar el menú,
 
 ## Sobre el autor
 
-Mi nombre es Mario Vázquez Otero, y es mi segundo año estudiando Desarrollo de Aplicaciones Web a la vez que imparto clases de CrossFit, movimientos gimnásticos y halterofilia en CrossFit SCQ en el centro multideportivo Unit365, O Milladoiro.
-
-Mi experiencia en desarrollo de aplicaciones web engloba lenguajes como:
-
-- JavaScript
-- Node.js
-- Java
-- PHP
-- Python
-- TypeScript
-- HTML
-- CSS
-
+Mi nombre es Mario Vázquez Otero, soy programador full-stack a la vez que imparto clases de CrossFit, movimientos gimnásticos y halterofilia en CrossFit SCQ en el centro multideportivo Unit365, O Milladoiro.
 
 ## Licencia
 *GNU Free Documentation License Version 3.0*
